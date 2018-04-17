@@ -3,7 +3,7 @@ import lxml.etree
 from lxml import html
 import requests
 
-url = 'http://homepc:4040/~jonreiter/pugs_talk/example1.html'
+url = 'http://homepc:4040/~jonreiter/pugs_talk/example2.html'
 
 page = requests.get(url)
 
