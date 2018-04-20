@@ -54,3 +54,4 @@ while not found:
 
 # wait a bit for demo reasons
 sleep(15)
+driver.quit()
