@@ -9,9 +9,8 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
 
-# we want headless
+# launch with a head
 firefoxOptions = Options()
-firefoxOptions.add_argument('-headless')
 
 # kick off a firefox
 driver = webdriver.Firefox(options=firefoxOptions)

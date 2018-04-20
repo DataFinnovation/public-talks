@@ -1,16 +1,24 @@
 
 import lxml.etree
-from lxml import html
 import requests
 
-url = 'http://homepc:4040/~jonreiter/pugs_talk/example2.html'
+# target location
+url = 'https://github.com/DataFinnovation/public-talks/blob/master/pugs-scraping/example2.html'
 
+# get the page
 page = requests.get(url)
 
+# parse it
 tree = lxml.etree.fromstring(page.content)
 
+# what elements we care about
 theXPath = '//a[text()="link"]/@href'
+
+# grab all of them
 resultList = tree.xpath(theXPath)
 
+# now grab one of those links
 page2 = requests.get(resultList[0])
-print(page2.text)
+
+# and dump the headers for this next link
+print(page2.headers)

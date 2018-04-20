@@ -1,20 +1,21 @@
 
 import lxml.etree
-from lxml import html
 import requests
 
-url = 'http://homepc:4040/~jonreiter/pugs_talk/example1.html'
+# what page do we care about
+url = 'https://github.com/DataFinnovation/public-talks/blob/master/pugs-scraping/example1.html'
 
+# get the page
 page = requests.get(url)
 
+# parse the content
 tree = lxml.etree.fromstring(page.content)
 
+# what element do we care about
 theXPath = '//strong/text()'
-resultList = tree.xpath(theXPath)
-print(resultList[0])
 
-# discarded because they arent valid!
-url = 'https://cdr.ffiec.gov/public/PWS/DownloadBulkData.aspx'
-url = 'https://www.sec.gov/Archives/edgar/daily-index/'
-url = 'http://www.twse.com.tw/en/page/trading/exchange/MI_INDEX.html'
-url = 'http://download.companieshouse.gov.uk/en_accountsdata.htmls'
+# grab it
+resultList = tree.xpath(theXPath)
+
+# and print it out
+print(resultList[0])
