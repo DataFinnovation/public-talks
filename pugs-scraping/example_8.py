@@ -12,7 +12,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
 
-url = 'http://homepc:4040/~jonreiter/pugs_talk/example1.html'
+url = 'https://raw.githubusercontent.com/DataFinnovation/public-talks/master/pugs-scraping/example1.html'
 
 page = requests.get(url)
 
