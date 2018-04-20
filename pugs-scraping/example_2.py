@@ -3,7 +3,7 @@ import lxml.etree
 import requests
 
 # target location
-url = 'https://github.com/DataFinnovation/public-talks/blob/master/pugs-scraping/example2.html'
+url = 'https://raw.githubusercontent.com/DataFinnovation/public-talks/master/pugs-scraping/example2.html'
 
 # get the page
 page = requests.get(url)
