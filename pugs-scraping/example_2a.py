@@ -18,6 +18,8 @@ theColorXPath = '../td[@class="color"]/text()'
 
 # get the apple element
 appleEle = tree.xpath(theXPath)[0]
+
+# find price and color relative to apple
 price = appleEle.xpath(thePriceXPath)[0]
 color = appleEle.xpath(theColorXPath)[0]
 
