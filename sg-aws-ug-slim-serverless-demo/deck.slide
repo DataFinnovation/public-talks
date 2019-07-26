@@ -1,0 +1,87 @@
+Lightweight Interactive Demos
+No Servers, No DBs, No Nothing
+10 Aug 2019
+
+Jon Reiter
+DataFinnovaiton
+jonathan.reiter@datafinnovation.com
+
+
+
+* Fast, Cheap & Easy Demos
+- Proof-of-Concept systems
+- Experiments
+- Likely other stuff
+
+* Why?
+- Cost & time matter
+- Nobody wants to maintain infrastructure for a demo, and nobody does
+- Throwaway code is fine if benefit > cost
+
+* Cloud is supposed to be flexible and lightweight
+- Serverless is great, but that term can be misleading
+- If min capacity > 0 there is something to maintain (and bill)
+- Complex initialization process is a non-starter
+
+* Goal: build the lowest maintainence, cheapest demo infrastructure
+- No servers
+- No RDS/Dynamo/etc
+- No Cognito (or logins)
+- No maintenance
+- Easy to wipe the system clean
+
+* Limitations we can accept
+- Insecure
+- Limited fault tolerance
+- No locking/transactions
+- No concurrent use
+- Demo/POC, not a real system!
+
+* Building blocks
+- API Gateway: simple external access
+- Lambda: compute, business logic, etc
+- S3: JSON in flat files as a data store
+- Some kind of screen (AngularJS, React, Tcl/Tk, whatever)
+
+* Simple interface
+- JSON REST out of API Gateway
+- Gateway feeds Lambda
+- Persist state in S3
+- Screens interact via the API
+- Remember we said no locking or concurrent use
+
+* What about state?
+- Need state unless it's a trivial application
+- Exploit S3 directory structure
+- JSON allows a "state" key
+- I'm not joking
+
+* Components
+- API Gateway configured to feed Lambda
+- Lambda function that implements REST API
+- Use S3 as the database
+- Screen that speaks that API
+
+* Security
+- No logins, it's a demo!
+- Throttle API Gateway at 0 when not in use
+- Use a segragated demo account
+
+* Preparing for a demo
+- Unthrottle
+- Delete everything in the S3 bucket
+- If you need initial state then write a script to upload it
+
+* Running cost
+- Approximately 0
+
+* Maintenace work
+- Approximately 0
+- There is nothing running to maintain
+- Throttle / unthrottle is the only switch
+- Deleting S3 contents is pretty easy
+
+* Performance
+- Probably fine
+- Can only handle 1 user at a time
+- Easily scalable: run two copies
